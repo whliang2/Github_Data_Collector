@@ -47,14 +47,14 @@ def repos_to_csv(repos_by_lang, page_num):
     # print(pd_format_dic)
 
     df = pd.DataFrame.from_dict(pd_format_dic)
-    file_name = Config('../config').get_search_setting()['lang'].split(':')[1]
+    file_name = Config().get_search_setting()['lang'].split(':')[1]
     df.to_csv(f'../data/{file_name}_github_{page_num}.csv')
     print(f'Saving {file_name}_github_{page_num} to csv finished!!')
 
 
 # python do while structure
 page = 1
-query_string = f"q={Config('../config').get_search_setting()['lang']}&page={page}&per_page={Config('../config').get_search_setting()['data_per_page']}&sort=stars&order=desc"
+query_string = f"q={Config().get_search_setting()['lang']}&page={page}&per_page={Config().get_search_setting()['data_per_page']}&sort=stars&order=desc"
 
 while True:
     # initial request  
